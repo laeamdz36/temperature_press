@@ -8,3 +8,6 @@ def printing_info():
 
     msg = "Hola Mundo"
     print(msg * 10)
+
+
+printing_info()
