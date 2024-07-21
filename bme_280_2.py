@@ -18,5 +18,5 @@ for reading in range(5):
     out_msg = f"""Humedad actua: {humidity}
                 Presion actual: {pressure}
                 Temperatura: {ambient_temperature} C"""
-    print(ambient_temperature)
+    print(out_msg)
     sleep(1)
