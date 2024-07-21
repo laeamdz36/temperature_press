@@ -12,8 +12,8 @@ bme280.load_calibration_params(bus, address)
 
 for reading in range(5):
     bme280_data = bme280.sample(bus, address)
-    humidity = f"Humedad actual{bme280_data.humidity} %"
-    pressure = f"Presion actual{bme280_data.pressure} hPa"
+    humidity = f"Humedad actual: {bme280_data.humidity} %"
+    pressure = f"Presion actual: {bme280_data.pressure} hPa"
     ambient_temperature = f"Temperatura: {bme280_data.temperature} C"
 
     print(humidity, pressure, ambient_temperature)
