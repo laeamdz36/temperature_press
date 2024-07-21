@@ -15,5 +15,8 @@ for reading in range(5):
     humidity = bme280_data.humidity
     pressure = bme280_data.pressure
     ambient_temperature = bme280_data.temperature
-    print(humidity, pressure, ambient_temperature)
+    out_msg = f"""Humedad actua: {humidity}
+                Presion actual: {pressure}
+                Temperatura: {ambient_temperature} C"""
+    print(ambient_temperature)
     sleep(1)
