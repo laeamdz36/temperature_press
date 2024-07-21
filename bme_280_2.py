@@ -11,8 +11,9 @@ bus = smbus2.SMBus(port)
 bme280.load_calibration_params(bus, address)
 
 bme280_data = bme280.sample(bus, address)
+time_stamp = f"Tiempo: {bme280_data.timestamp}"
 humidity = f"Humedad actual: {bme280_data.humidity} %"
 pressure = f"Presion actual: {bme280_data.pressure} hPa"
 ambient_temperature = f"Temperatura: {bme280_data.temperature} °C"
 
-print(humidity, pressure, ambient_temperature, sep="\n")
+print(time_stamp, humidity, pressure, ambient_temperature, sep="\n")
