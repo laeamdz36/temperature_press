@@ -1,0 +1,11 @@
+body {
+    background-color: #00224D;
+}
+
+.page_header {
+    color: crimson;
+    font-size: 50px;
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    margin: 10px;
+    display: inline-block;
+}

@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -38,7 +38,7 @@ def testing():
 def temperature():
     """Show temperature info"""
     total_msg = get_data()
-    return total_msg
+    return render_template("./flask_templates/temperature.html", temp_info=total_msg)
 
 
 if __name__ == "__main__":
