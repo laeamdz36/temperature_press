@@ -27,7 +27,7 @@ def index():
     return "Hello world"
 
 
-@app.route("testing")
+@app.route("/testing")
 def testing():
     """Testing"""
     return "testing"
