@@ -1,6 +1,25 @@
 from flask import Flask
+import bme280
+import smbus2
 
 app = Flask(__name__)
+
+
+def get_data():
+    """Get data from sensor"""
+    port = 1
+    address = 0x76  # Adafruit BME280 address. Other BME280s may be different
+    bus = smbus2.SMBus(port)
+
+    bme280.load_calibration_params(bus, address)
+
+    bme280_data = bme280.sample(bus, address)
+    time_stamp = f"Tiempo: {bme280_data.timestamp}"
+    humidity = f"Humedad actual: {bme280_data.humidity} %"
+    pressure = f"Presion actual: {bme280_data.pressure} hPa"
+    ambient_temperature = f"Temperatura: {bme280_data.temperature} °C"
+
+    return humidity, pressure, ambient_temperature
 
 
 @app.route("/")
@@ -12,7 +31,8 @@ def index():
 @app.route("/temperature")
 def temperature():
     """Show temperature info"""
-    return "Temperature"
+    humidity, pressure, ambient_temperature = get_data()
+    return humidity, pressure, ambient_temperature
 
 
 if __name__ == "__main__":
