@@ -39,7 +39,7 @@ def testing():
 def temperature():
     """Show temperature info"""
     total_msg = get_data()
-    return render_template("temperature.html", temp_info=total_msg)
+    return render_template("/temperature.html", temp_info=total_msg)
 
 
 if __name__ == "__main__":
