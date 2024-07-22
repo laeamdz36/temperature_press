@@ -14,10 +14,9 @@ def get_data():
     bme280.load_calibration_params(bus, address)
 
     bme280_data = bme280.sample(bus, address)
-    time_stamp = f"Tiempo: {bme280_data.timestamp}"
-    humidity = f"Humedad actual: {bme280_data.humidity} %"
-    pressure = f"Presion actual: {bme280_data.pressure} hPa"
-    ambient_temperature = f"Temperatura: {bme280_data.temperature} °C"
+    humidity = f"Humedad actual: {bme280_data.humidity:.2f} %"
+    pressure = f"Presion actual: {bme280_data.pressure:.2f} hPa"
+    ambient_temperature = f"Temperatura: {bme280_data.temperature:.2f} °C"
 
     return humidity, pressure, ambient_temperature
 
@@ -26,6 +25,12 @@ def get_data():
 def index():
     """Index page"""
     return "Hello world"
+
+
+@app.route("testing")
+def testing():
+    """Testing"""
+    return "testing"
 
 
 @app.route("/temperature")
