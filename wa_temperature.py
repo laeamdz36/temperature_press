@@ -18,9 +18,8 @@ def get_data():
     humidity = f"Humedad actual: {bme280_data.humidity:.2f} %"
     pressure = f"Presion actual: {bme280_data.pressure:.2f} hPa"
     ambient_temperature = f"Temperatura: {bme280_data.temperature:.2f} °C"
-    total_msg = humidity + "\n" + pressure + "\n" + ambient_temperature
 
-    return total_msg
+    return [humidity, pressure, ambient_temperature]
 
 
 @app.route("/")
@@ -38,8 +37,10 @@ def testing():
 @app.route("/temperature")
 def temperature():
     """Show temperature info"""
-    total_msg = get_data()
-    return render_template("/temperature.html", temp_info=total_msg)
+    humidity, pressure, ambient_temperature = get_data()
+    return render_template("temperature.html", data_temp=ambient_temperature,
+                           data_humidity=humidity,
+                           data_pressure=pressure)
 
 
 if __name__ == "__main__":
