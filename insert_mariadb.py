@@ -23,6 +23,23 @@ def read_bme_data():
     return humidity, pressure, ambient_temperature
 
 
+def read_bme_data_v1():
+    """Read data from BME sensor"""
+
+    port = 1
+    address = 0x76  # Adafruit BME280 address. Other BME280s may be different
+    bus = smbus2.SMBus(port)
+
+    bme280.load_calibration_params(bus, address)
+
+    bme280_data = bme280.sample(bus, address)
+    humidity = float(bme280_data.humidity)
+    pressure = float(bme280_data.pressure)
+    ambient_temperature = float(bme280_data.temperature)
+
+    return humidity, pressure, ambient_temperature
+
+
 def mariadb_conn():
     """Connection to database mariadb verify file"""
 
