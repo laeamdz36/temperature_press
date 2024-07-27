@@ -77,16 +77,16 @@ def mariadb_conn_v1():
         sys.exit(1)
 
     # Get Cursor
-    cursor = conn.cursor()
+    cur = conn.cursor()
 
-    return cursor
+    return cur, conn
 
 
 def insert_into_db():
     """Insert into de database for temperature, humidity and pressure"""
     humidity, pressure, temp = read_bme_data_v1()
     # DB connection
-    cur = mariadb_conn_v1()
+    cur, conn = mariadb_conn_v1()
     date = dt.datetime.today()
     # insert information
     try:
@@ -94,6 +94,7 @@ def insert_into_db():
             "INSERT INTO data_temp (date_time, temperature, humidity, pressure) VALUES (?, ?, ?, ?)", (date, temp, humidity, pressure))
     except mariadb.Error as e:
         print(f"Error: {e}")
+    conn.commit()
     cur.close()
 
 
