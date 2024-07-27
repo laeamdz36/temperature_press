@@ -84,7 +84,7 @@ def mariadb_conn_v1():
 
 def insert_into_db():
     """Insert into de database for temperature, humidity and pressure"""
-    humidity, pressure, temp = read_bme_data()
+    humidity, pressure, temp = read_bme_data_v1()
     # DB connection
     cur = mariadb_conn_v1()
     date = dt.datetime.today()
